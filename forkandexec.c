@@ -14,7 +14,7 @@ int main(int argc, char * argv[]){
 
   if (c_pid == 0){
  
-
+    printf("Hi,Im Child :%d\n",c_pid);
     printf("Child:is executing ip\n");
 
                                                                                                                                                                
@@ -23,6 +23,7 @@ int main(int argc, char * argv[]){
     perror("execve failed");
   }else if (c_pid > 0){
 
+   printf("Hi,Im Parent :%d\n",c_pid);
 
     if( (pid = wait(&status)) < 0){
       perror("wait");
@@ -32,9 +33,10 @@ int main(int argc, char * argv[]){
     printf("Parent:is finish\n");
 
   }else{
+      if(c_pid==-1){
     perror("fork failed");
     _exit(1);
-  }
+  }}
 
   return 0; 
 }
